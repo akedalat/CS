@@ -11,3 +11,17 @@ function next(node){
   // retrieve the address of the next element
   return collection[nextAddress]
 }
+
+// Find the next node by index
+function indexAt(head, index){
+    let node = head;
+    for(i = 0; i < index; i++){
+       node = next(node);
+    }
+   
+    return node;
+  }
+  
+//indexAt(head, 2) would give:
+ 
+// ['ferris', null]
