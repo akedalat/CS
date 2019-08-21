@@ -7,6 +7,21 @@ function areThereDuplicates() {
  return Object.values(obj).includes(2) ? true : false
 } 
 
+function countUniqueValues(array){
+     let i = 0;
+    if(array.length === 0){
+        return 0;
+    } else {
+        for(let j = 1; j < array.length; j++){
+            if(array[i] !== array[j]){
+                i++;
+                array[i] = array[j];
+            }
+          }
+        }
+        return i + 1;
+    }
+  
 // Frequency Counter
 // Check if two numbers have same numbers in them
 function sameFrequency(int1, int2){
