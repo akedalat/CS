@@ -72,3 +72,44 @@ function sameFrequency(int1, int2){
          }
      return false;
      }
+
+     // Check if chars in first string appears somewhere in second string
+     function isSubsequence(firstString,secondString) {
+      if(firstString.length > secondString.length){
+          return false;
+          } else {
+              for (let i = 0; i < secondString.length; i++){
+                  let firstLetter = firstString[0]
+                  if(secondString[i] === firstLetter){
+                      firstString = firstString.slice(1)
+                  }
+                   if (firstString.length === 0){
+                  return true;
+                }
+              } 
+                  return false;
+        }
+    }
+
+    // Find maximum sum of subarray with the length of the number passed to the function
+    function maxSubarraySum(array, num){
+      let maxNum = null
+      let tempMax = null
+      if(num > array.length){
+          return null;
+      } else {
+          for(let i = 0; i < num; i++){
+              maxNum += array[i]
+          }
+          tempMax = maxNum
+          for(let i = num; i < array.length; i++){
+              tempMax = tempMax + array[i] - array[i - num]
+              maxNum = Math.max(maxNum, tempMax)
+          }
+          
+          return maxNum
+      }
+    }
+    // for example
+    // maxSubarraySum([100,200,300,400],2) returns 700
+    // maxSubarraySum([-3,4,0,-2,6,-1], 2) returns 5
