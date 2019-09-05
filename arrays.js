@@ -7,6 +7,7 @@ function areThereDuplicates () {
   return !!Object.values(obj).includes(2)
 }
 
+// Multiple pointers
 // Works if array is sorted
 function countUniqueValues (array) {
   let i = 0
@@ -26,6 +27,7 @@ function countUniqueValues (array) {
 // Frequency Counter
 // Check if two numbers have same numbers in them
 function sameFrequency (int1, int2) {
+  // `convert int to array
   const array1 = Array.from(String(int1), Number)
   const array2 = Array.from(String(int2), Number)
   const obj1 = {}
@@ -94,24 +96,51 @@ function isSubsequence (firstString, secondString) {
 }
 
 // Find maximum sum of subarray with the length of the number passed to the function
+// for example
+// maxSubarraySum([100,200,300,400],2) returns 700
+// maxSubarraySum([-3,4,0,-2,6,-1], 2) returns 5
 function maxSubarraySum (array, num) {
-  let maxNum = null
-  let tempMax = null
+  let maxSum = null
+  let tempSum = null
   if (num > array.length) {
     return null
   } else {
     for (let i = 0; i < num; i++) {
-      maxNum += array[i]
+      maxSum += array[i]
     }
-    tempMax = maxNum
+    tempSum = maxSum
     for (let i = num; i < array.length; i++) {
-      tempMax = tempMax + array[i] - array[i - num]
-      maxNum = Math.max(maxNum, tempMax)
+      tempSum = tempSum + array[i] - array[i - num]
+      maxSum = Math.max(maxSum, tempSum)
     }
-
-    return maxNum
+    return maxSum
   }
 }
-// for example
-// maxSubarraySum([100,200,300,400],2) returns 700
-// maxSubarraySum([-3,4,0,-2,6,-1], 2) returns 5
+
+// return min sub array of sum that is >= num
+// for example minSubArrayLen([2,3,1,2,4,3], 7) must return 2 because 4 + 3 >= 7
+function minSubArrayLen(array, num) {
+  let start = 0
+  let end = 0
+  let minLen = 0
+  let sum = 0
+  while (sum < num && end < array.length) {
+    sum += array[end]
+    end++
+  }
+
+  if (sum < num) { return minLen }
+  minLen = end
+
+  for (let j = 0; j <= array.length; j++) {
+    if (sum >= num) {
+      minLen = Math.min(minLen, end - start)
+      sum = sum - array[start]
+      start++
+    } else {
+      sum = sum + array[end]
+      end++
+    }
+  }
+  return minLen
+}
