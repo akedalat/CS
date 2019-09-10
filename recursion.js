@@ -55,7 +55,7 @@ function printString(myString) {
     }
   }
 
-   //Add Up To Soution 1
+   //Add Up To Solution 1
    function addUpTo(array, index){
     let slicedArray = array.slice(0, index + 1)
     if(slicedArray.length > 0){
@@ -66,7 +66,7 @@ function printString(myString) {
     }
   }
 
-  //Add Up To Soution 2
+  //Add Up To Solution 2
   function addUpTo(myArray, index) {
     return index ? myArray[index] + addUpTo(myArray, --index) : myArray[index];
   }
@@ -94,4 +94,33 @@ function printString(myString) {
     }
   }
 
+// productOfArray([1,2,3]) // 6
+// productOfArray([1,2,3,10]) // 60
+function productOfArray(array){
+  if (array.length === 0){ return 1 }
+  return array[0] * productOfArray(array.slice(1))
+}                   
 
+// SAMPLE INPUT / OUTPUT
+// const isOdd = val => val % 2 !== 0;
+// someRecursive([1,2,3,4], isOdd) // true
+// someRecursive([4,6,8,9], isOdd) // true
+// someRecursive([4,6,8], isOdd) // false
+// someRecursive([4,6,8], val => val > 10); // false
+function someRecursive(array, callBack){
+  if(array.length === 0) { return false }
+  if(callBack(array[0])) { return true }
+  else { return someRecursive(array.slice(1), callBack) }
+}
+
+// flatten([1, [2, [3, 4], [[5]]]]) // [1, 2, 3, 4, 5]
+// flatten([[1],[2],[3]]) // [1,2,3]
+function flatten(array){
+  let newArr = []
+  for(let i = 0; i < array.length; i++){
+  if (typeof(array[i]) === 'object') { 
+      newArr = newArr.concat(flatten(array[i])) }
+    else { newArr.push(array[i]) }
+  }
+  return newArr
+}
