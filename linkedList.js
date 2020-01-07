@@ -22,5 +22,5 @@ function indexAt (head, index) {
   return node
 }
 
-// indexAt(head, 2) would give:
+// indexAt(firstNode, 2) would give:
 // ['ferris', null]
