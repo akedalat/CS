@@ -13,6 +13,7 @@ class DoublyLinkedList {
     this.head = null;
     this.length = 0;
   }
+
   push(val) {
     const newNode = new Node(val);
     if (this.length === 0) {
@@ -63,6 +64,7 @@ class DoublyLinkedList {
     this.length--;
     return oldHead;
   }
+
   unshift(val) {
     const newNode = new Node(val);
     if (this.length === 0) {
@@ -76,6 +78,7 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
   get(index) {
     if (index >= this.length || index < 0) {
       return null;
@@ -140,5 +143,20 @@ class DoublyLinkedList {
     currentNode.prev = newNode;
     this.length++;
     return true;
+  }
+
+  remove(index){
+    if (index >= this.length || index < 0) {
+        return undefined;
+      }
+    if(index === 0){this.shift()}
+    if(index === this.length - 1){this.pop()}
+    let targetNode = this.get(index) 
+    targetNode.prev.next = targetNode.next
+    targetNode.next.prev = targetNode.prev
+    targetNode.prev = null
+    targetNode.next = null
+    this.length--
+    return targetNode
   }
 }
