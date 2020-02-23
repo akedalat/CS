@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/sorting_algorithms.js"
+      "program": "${workspaceFolder}/data-structure/MaxHeap.js"
     }
   ]
 }
