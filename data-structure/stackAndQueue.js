@@ -26,7 +26,7 @@ class Stack {
 	}
 	// first out
 	// if we remove from the end then it's not constant time
-	// because we have iterate through the list
+	// because we have to iterate through the list
 	pop() {
 		if (this.size === 0) {
 			return null;

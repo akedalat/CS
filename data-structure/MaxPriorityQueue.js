@@ -1,12 +1,13 @@
-// root of the tree must be larger
-// parent must be larger than children
-class MaxHeap {
+// similar to max/min Heap tree
+// parent adjusted according to priority level to its children
+class MaxPriorityQueue {
 	constructor(){
 		this.values = [];
 	}
     
-	insert(currentElement){
-		this.values.push(currentElement);
+	insert(val, priority){
+		let newNode = new Node(val, priority);
+		this.values.push(newNode);
 		this.bubbleUp();
 	}
 
@@ -17,7 +18,7 @@ class MaxHeap {
 		while(index > 0){
 			let parentIndex = Math.floor((index - 1) / 2);
 			let parent = this.values[parentIndex];
-			if(currentElement <= parent){
+			if(currentElement.priority <= parent.priority){
 				break; 
 			} else {
 				this.values[index] = parent;
@@ -57,13 +58,13 @@ class MaxHeap {
 			if(rightChildIndex < this.values.length){
 				rightChild = this.values[rightChildIndex];
 			}
-			// In Heap trees if there is no left child then there is definite ly no right child
+			// In Heap trees if there is no left child then there is definitely no right child
 			if(leftChild){
-				if(rightChild && rightChild > currentElement && rightChild > leftChild){
+				if(rightChild && rightChild.priority > currentElement.priority && rightChild.priority > leftChild.priority){
 					this.values[rightChildIndex] = currentElement;
 					this.values[index] = rightChild;
 					index = rightChildIndex;
-				} else if(leftChild > currentElement){
+				} else if(leftChild.priority > currentElement.priority){
 					this.values[leftChildIndex] = currentElement;
 					this.values[index] = leftChild;
 					index = leftChildIndex;
@@ -74,12 +75,17 @@ class MaxHeap {
 	}
 }
 
-let h = new MaxHeap();
-h.insert(25);
-h.insert(20);
-h.insert(15);
-h.insert(10);
-h.insert(17);
-console.log(h.values);
-h.remove();
-console.log(h.values);
+class Node{
+	constructor(val, priority){
+		this.val = val;
+		this.priority = priority;
+	}
+}
+
+let p = new MaxPriorityQueue();
+p.insert("a",1);
+p.insert("b",5);
+p.insert("c",2);
+p.insert("d",10);
+p.insert("e",17);
+console.log(p.values);
