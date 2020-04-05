@@ -57,7 +57,7 @@ class MaxHeap {
 			if(rightChildIndex < this.values.length){
 				rightChild = this.values[rightChildIndex];
 			}
-			// In Heap trees if there is no left child then there is definite ly no right child
+			// In Heap trees if there is no left child then there is definitely no right child
 			if(leftChild){
 				if(rightChild && rightChild > currentElement && rightChild > leftChild){
 					this.values[rightChildIndex] = currentElement;
