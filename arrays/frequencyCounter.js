@@ -1,7 +1,7 @@
 // Frequency Counter
 // Check if two numbers have same numbers in them
-function sameFrequency (int1, int2) {
-	// `convert int to array
+function frequencyCounter (int1, int2) {
+	// convert int to array
 	const array1 = Array.from(String(int1), Number);
 	const array2 = Array.from(String(int2), Number);
 	const obj1 = {};

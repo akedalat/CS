@@ -1,5 +1,3 @@
-
-
 // return min sub array of sum that is >= num
 // for example minSubArrayLen([2,3,1,2,4,3], 7) must return 2 because 4 + 3 >= 7
 function minSubArrayLen (array, num) {

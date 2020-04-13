@@ -1,3 +1,4 @@
+// Graphs represent vertexes (nodes) connected by edges edges
 class Graph{
 	constructor(){
 		this.adjacencyList = {};
